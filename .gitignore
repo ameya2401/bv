@@ -46,19 +46,29 @@ Thumbs.db
 bvimit/
 
 # Ignore all migrated large files (Images, PDFs, GIFs)
-public/pdf/
-public/gifs/
 public/legacy/
 public/assets/documents/
 
 # Ignore all images by default (due to huge legacy size)
-public/images/*
-public/assets/images/*
 
 # Explicitly ALLOW ONLY new website images
-!public/images/hero-building.jpg
-!public/assets/images/bharati_logo.png
-!public/assets/images/logo_50years.png
-!public/assets/images/bvcop_campus.jpg
-!public/assets/images/bvimit_campus.jpg
-!public/assets/images/campusbanner.jpg
+
+
+# Automatically ignored large assets (>15MB)
+public/images/events/ganeshpooja.png
+public/pdf/Aicte approval Letter All.pdf
+public/pdf/BVIMIT STUDENT HANDBOOK 2023-2024 (2).pdf
+public/pdf/BVIMIT_DAIRIES_2022[1].pdf
+public/pdf/Glipses_2024.pdf
+public/pdf/IMIT diries-2020.pdf
+public/pdf/IMIT_DAIRIES_2018.pdf_
+public/pdf/IMIT_DAIRIES_2019.pdf
+public/pdf/MCA PLACEMENT BROCHURE 2017.pdf
+public/pdf/MCABrochure2025.pdf
+public/pdf/NCIT2017_Proceedings.pdf
+public/pdf/NCIT2017_Proceedings1.pdf
+public/pdf/OBC VJNT SBC GR.pdf
+public/pdf/Placement Brochure 19-20.pdf
+public/pdf/STUDENT_HANDBOOK 2017-2018.pdf
+public/pdf/STUDENT_HANDBOOK 2018-2019.pdf
+public/pdf/tech_mag18-19.pdf
