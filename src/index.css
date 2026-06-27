@@ -141,6 +141,12 @@
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
+  .dark body {
+    background-color: #1A202C !important;
+  }
+  .dark .bg-background:not(body) {
+    background-color: transparent !important;
+  }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Source Serif 4', Georgia, serif;
   }
