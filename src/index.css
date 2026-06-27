@@ -1,4 +1,5 @@
 /* DO NOT CHANGE */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
@@ -42,94 +43,94 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* BVIMIT THEME - Maestro Image Extraction */
+/* BVIMIT THEME - Custom Request */
 :root {
-  --radius: 0.75rem;
+  --radius: 0.5rem; /* Reverted to normal rounded for containers. Buttons are explicitly rounded-full */
 
-  /* Deep Ocean Light Mode Mapping */
-  --background: #F8F9FA; 
-  --foreground: #111827; 
-  --card: #FFFFFF;
-  --card-foreground: #111827;
-  --popover: #FFFFFF;
-  --popover-foreground: #111827;
+  /* Distinct Light Mode Background */
+  --background: #EAF0F6; 
+  --foreground: #1B1C1C; 
+  --card: #ffffff;
+  --card-foreground: #1B1C1C;
+  --popover: #ffffff;
+  --popover-foreground: #1B1C1C;
 
   /* Primary Accent & Brand Colors */
-  --primary: #0A9396; 
+  --primary: #000888; 
   --primary-foreground: #ffffff;
-  --secondary: #94D2BD; 
-  --secondary-foreground: #111827;
+  --secondary: #FDC003; 
+  --secondary-foreground: #000000;
+  
+  --muted: #F2F2F2;
+  --muted-foreground: #5a403f;
 
-  --muted: #E5E7EB;
-  --muted-foreground: #6B7280;
+  --accent: #181B23; 
+  --accent-foreground: #ffffff;
 
-  --accent: #94D2BD; 
-  --accent-foreground: #111827;
-
-  --destructive: #ef4444; 
-  --border: #E5E7EB;
-  --input: #E5E7EB;
-  --ring: #0A9396;
+  --destructive: #ba1a1a; 
+  --border: #e4e2e2;
+  --input: #e4e2e2;
+  --ring: #000888;
 
   /* Charts */
-  --chart-1: #0A9396;
-  --chart-2: #111827;
-  --chart-3: #94D2BD;
-  --chart-4: #E9ECEF;
-  --chart-5: #38bdf8;
+  --chart-1: #000888;
+  --chart-2: #FDC003;
+  --chart-3: #181B23;
+  --chart-4: #F2F2F2;
+  --chart-5: #1B1C1C;
 
   /* Sidebar */
   --sidebar: #ffffff;
-  --sidebar-foreground: #111827;
-  --sidebar-primary: #0A9396;
+  --sidebar-foreground: #1B1C1C;
+  --sidebar-primary: #000888;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #E5E7EB;
-  --sidebar-accent-foreground: #111827;
-  --sidebar-border: #E5E7EB;
-  --sidebar-ring: #0A9396;
+  --sidebar-accent: #F2F2F2;
+  --sidebar-accent-foreground: #1B1C1C;
+  --sidebar-border: #e4e2e2;
+  --sidebar-ring: #000888;
 }
 
 .dark {
-  /* Deep Ocean Dark Mode Mapping (Inverted) */
-  --background: #111827; 
+  /* Deep Ocean Dark Mode Mapping (Inverted Minimalist) */
+  --background: #1A202C; 
   --foreground: #F8F9FA;
-  --card: #1F2937; 
+  --card: #2D3748; 
   --card-foreground: #F8F9FA;
   --popover: #1F2937;
   --popover-foreground: #F8F9FA;
 
-  --primary: #0A9396; 
+  --primary: #4f68ff; /* Lighter primary for dark mode visibility */
   --primary-foreground: #ffffff;
-  --secondary: #1F2937; 
-  --secondary-foreground: #F8F9FA;
+  --secondary: #FDC003; 
+  --secondary-foreground: #000000;
 
   --muted: #374151;
   --muted-foreground: #9CA3AF;
 
-  --accent: #0A9396; 
+  --accent: #181B23; 
   --accent-foreground: #ffffff;
 
   --destructive: #ef4444;
   --border: #374151;
   --input: #374151;
-  --ring: #0A9396;
+  --ring: #000888;
 
   /* Charts */
-  --chart-1: #0A9396;
-  --chart-2: #2A323D;
-  --chart-3: #ADB5BD;
-  --chart-4: #E9ECEF;
-  --chart-5: #38bdf8;
+  --chart-1: #000888;
+  --chart-2: #FDC003;
+  --chart-3: #181B23;
+  --chart-4: #374151;
+  --chart-5: #F8F9FA;
 
   /* Sidebar */
   --sidebar: #1F2937;
   --sidebar-foreground: #F8F9FA;
-  --sidebar-primary: #0A9396;
+  --sidebar-primary: #000888;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #374151;
   --sidebar-accent-foreground: #F8F9FA;
   --sidebar-border: #374151;
-  --sidebar-ring: #0A9396;
+  --sidebar-ring: #000888;
 }
 
 @layer base {
@@ -139,6 +140,9 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Serif 4', Georgia, serif;
   }
   button:not([disabled]),
   [role="button"]:not([disabled]) {

@@ -39,9 +39,26 @@ build/
 Thumbs.db
 .pnpm-debug.log*
 
-# Ignore legacy files (too large for git)
+# AI Agent Skills
+.agents/
+
+# Legacy folders
+bvimit/
+
+# Ignore all migrated large files (Images, PDFs, GIFs)
+public/pdf/
+public/gifs/
 public/legacy/
 public/assets/documents/
 
-# AI Agent Skills
-.agents/
+# Ignore all images by default (due to huge legacy size)
+public/images/*
+public/assets/images/*
+
+# Explicitly ALLOW ONLY new website images
+!public/images/hero-building.jpg
+!public/assets/images/bharati_logo.png
+!public/assets/images/logo_50years.png
+!public/assets/images/bvcop_campus.jpg
+!public/assets/images/bvimit_campus.jpg
+!public/assets/images/campusbanner.jpg

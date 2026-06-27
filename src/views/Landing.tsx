@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, FileText, Trophy, GraduationCap, Building } from "lucide-react";
 import { documentAssetPaths } from "@/data/publicAssetMap";
+import AboutTabs from "@/components/landing/AboutTabs";
 
 export default function Landing() {
   return (
@@ -11,114 +12,131 @@ export default function Landing() {
       className="bg-background text-foreground antialiased selection:bg-secondary selection:text-secondary-foreground overflow-x-hidden"
     >
       {/* Hero Section */}
-      <section className="relative w-full h-[600px] md:h-[700px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-primary/60 z-10"></div>
+      <section className="relative w-full min-h-[70vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden mb-20 py-20">
+        <div className="absolute inset-0 bg-primary/40 z-10 mix-blend-multiply"></div>
         <img
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          alt="Industrial Visit"
-          src="https://harmless-tapir-303.convex.cloud/api/storage/9a35e636-a4eb-419e-ba2b-edb716eef88b"
+          className="absolute inset-0 w-full h-full object-cover object-[center_60%] z-0 grayscale-[10%]"
+          alt="BVIMIT Campus Building"
+          src="/images/hero-building.jpg"
         />
-        <div className="relative z-20 text-center text-primary-foreground px-4 max-w-4xl mx-auto flex flex-col items-center gap-6">
-          <h1 className="text-5xl md:text-[64px] md:leading-[72px] font-bold text-white drop-shadow-lg">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative z-20 text-center text-primary-foreground px-4 max-w-4xl mx-auto flex flex-col items-center gap-6"
+        >
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-5xl md:text-[64px] md:leading-[72px] font-bold text-white tracking-tight"
+          >
             BVIMIT Mumbai<br />
-            <span className="text-secondary">Industrial Visit 2025</span>
-          </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl text-center">
+            <span className="text-secondary font-medium tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-secondary to-yellow-400">Industrial Visit 2025</span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl text-center font-light mt-4"
+          >
             IOS Innotech Chandigarh - Shaping Future Leaders through rigorous academics and industry exposure.
-          </p>
-          <div className="flex gap-4 mt-4">
-            <button className="bg-secondary text-secondary-foreground font-semibold px-8 py-3 rounded shadow-lg hover:bg-opacity-90 transition-all">
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex gap-4 mt-8"
+          >
+            <button className="bg-secondary text-black font-bold px-8 py-3 rounded-full hover:bg-secondary/90 transition-all hover:shadow-[0_0_20px_rgba(253,192,3,0.4)] hover:-translate-y-1">
               Apply Now
             </button>
-            <button className="border border-primary-foreground text-primary-foreground font-semibold px-8 py-3 rounded hover:bg-white/10 transition-all backdrop-blur-sm">
+            <button className="bg-white text-primary font-bold px-8 py-3 rounded-full hover:bg-gray-100 transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:-translate-y-1">
               Explore Campus
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
-      {/* Welcome & Intro (Mapped to About Founder & Institution) */}
-      <section className="max-w-7xl mx-auto px-4 md:px-10 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div className="flex flex-col gap-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary">Welcome to BVIMIT</h2>
-          <p className="text-base md:text-lg text-muted-foreground">
-            Bharati Vidyapeeth is an institution planted in the year 1964 by our founder Dr. Patangrao Kadam. 
-            During the last 59 years, Bharati Vidyapeeth has made astonishing strides in the field of education.
-          </p>
-          <p className="text-base md:text-lg text-muted-foreground italic border-l-4 border-primary pl-4 py-2">
-            "I am indeed happy to welcome you to MCA. Bharati Vidyapeeth's Institute of Management & Information Technology, Navi Mumbai. We aim to form youth with creative abilities to face the corporate world."
-          </p>
-          <div>
-            <button className="bg-primary text-primary-foreground font-semibold px-6 py-2 rounded mt-2 hover:bg-primary/90 transition-colors">
-              Read more
-            </button>
-          </div>
-        </div>
-        <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-md border border-border">
-          <img
-            className="w-full h-full object-cover"
-            alt="Founder Dr. Patangrao Kadam"
-            src="https://harmless-tapir-303.convex.cloud/api/storage/9a35e636-a4eb-419e-ba2b-edb716eef88b"
-          />
-        </div>
-      </section>
+      {/* Dynamic About Tabs Replicating Legacy Section */}
+      <AboutTabs />
 
       {/* Latest Updates Grid (Mapped to Notifications & Placements) */}
-      <section className="bg-muted/30 py-20">
-        <div className="max-w-7xl mx-auto px-4 md:px-10">
+      <section className="bg-transparent py-24 mt-20 relative overflow-hidden">
+        {/* Subtle background accent */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl pointer-events-none translate-y-1/2 -translate-x-1/3"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 md:px-10 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Notifications */}
-            <div className="bg-card border border-border p-8 rounded-lg hover:shadow-lg transition-shadow duration-300 flex flex-col gap-4">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="bg-card border border-border border-t-4 border-t-secondary shadow-xl p-8 rounded-xl flex flex-col gap-4 hover:shadow-2xl transition-all duration-300 group relative overflow-hidden"
+            >
               <div className="flex justify-between items-center border-b border-border pb-4">
-                <h3 className="text-2xl font-bold text-primary">Notifications</h3>
-                <FileText className="text-secondary w-6 h-6" />
+                <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">Notifications</h3>
+                <div className="p-2 bg-secondary/10 rounded-full group-hover:bg-secondary/20 transition-colors">
+                  <FileText className="text-secondary w-6 h-6" />
+                </div>
               </div>
               <div className="flex flex-col gap-6 mt-4">
-                <div className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></div>
+                <div className="flex gap-4 group/item">
+                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
                   <div>
-                    <h4 className="text-base font-bold text-foreground">MCA Latest Updates</h4>
+                    <h4 className="text-base font-bold text-foreground group-hover/item:text-primary transition-colors">MCA Latest Updates</h4>
                     <p className="text-sm text-muted-foreground mt-1">First Year MCA Admission 2024-25</p>
-                    <a href="#" className="text-sm text-primary font-medium hover:underline mt-1 block">View Details <ArrowRight className="w-3 h-3 inline" /></a>
+                    <a href="#" className="text-sm text-primary font-medium hover:underline mt-1 block">View Details <ArrowRight className="w-3 h-3 inline transition-transform group-hover/item:translate-x-1" /></a>
                   </div>
                 </div>
-                <div className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></div>
+                <div className="flex gap-4 group/item">
+                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
                   <div>
-                    <h4 className="text-base font-bold text-foreground flex items-center gap-2">
-                       MCA Brochure 2025-26 <span className="bg-orange-500 text-white text-[10px] px-2 py-0.5 rounded-full">NEW</span>
+                    <h4 className="text-base font-bold text-foreground flex items-center gap-2 group-hover/item:text-primary transition-colors">
+                       MCA Brochure 2025-26 <span className="bg-secondary text-white text-[10px] px-2 py-0.5 rounded-sm">NEW</span>
                     </h4>
                     <p className="text-sm text-muted-foreground mt-1">Download the latest brochure for the upcoming academic year.</p>
-                    <a href={documentAssetPaths.mcaBrochure2025} target="_blank" className="text-sm text-primary font-medium hover:underline mt-1 block">Download PDF <ArrowRight className="w-3 h-3 inline" /></a>
+                    <a href={documentAssetPaths.mcaBrochure2025} target="_blank" className="text-sm text-primary font-medium hover:underline mt-1 block">Download PDF <ArrowRight className="w-3 h-3 inline transition-transform group-hover/item:translate-x-1" /></a>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
             {/* Placements */}
-            <div className="bg-card border border-border p-8 rounded-lg hover:shadow-lg transition-shadow duration-300 flex flex-col gap-4">
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-card border border-border border-t-4 border-t-primary shadow-xl p-8 rounded-xl flex flex-col gap-4 hover:shadow-2xl transition-all duration-300 group relative overflow-hidden"
+            >
               <div className="flex justify-between items-center border-b border-border pb-4">
-                <h3 className="text-2xl font-bold text-primary">Placement Highlights</h3>
-                <Building className="text-secondary w-6 h-6" />
+                <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">Placement Highlights</h3>
+                <div className="p-2 bg-secondary/10 rounded-full group-hover:bg-secondary/20 transition-colors">
+                  <Building className="text-secondary w-6 h-6" />
+                </div>
               </div>
               <div className="flex flex-col gap-6 mt-4">
-                <div className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></div>
+                <div className="flex gap-4 group/item">
+                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
                   <div>
-                    <h4 className="text-base font-bold text-foreground">Saint Gobain (Batch 2025)</h4>
+                    <h4 className="text-base font-bold text-foreground group-hover/item:text-primary transition-colors">Saint Gobain (Batch 2025)</h4>
                     <p className="text-sm text-muted-foreground mt-1">CTC - 4.5 LPA</p>
                     <p className="text-sm text-muted-foreground italic mt-1">Placed: Bhavik Deshmukh</p>
                   </div>
                 </div>
-                <div className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></div>
+                <div className="flex gap-4 group/item">
+                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></div>
                   <div>
-                    <h4 className="text-base font-bold text-foreground">Batch 2024 Records</h4>
+                    <h4 className="text-base font-bold text-foreground group-hover/item:text-primary transition-colors">Batch 2024 Records</h4>
                     <p className="text-sm text-muted-foreground mt-1">Total 47 Companies Visited for Campus | Average CTC 4.5 LPA</p>
-                    <a href="#" className="text-sm text-primary font-medium hover:underline mt-1 block">View Full List <ArrowRight className="w-3 h-3 inline" /></a>
+                    <a href="#" className="text-sm text-primary font-medium hover:underline mt-1 block">View Full List <ArrowRight className="w-3 h-3 inline transition-transform group-hover/item:translate-x-1" /></a>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
