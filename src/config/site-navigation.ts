@@ -171,7 +171,7 @@ export const primaryNavigationItems: readonly PrimaryNavigationItem[] = [
   },
   {
     label: "MCA Syllabus",
-    href: "/courses/mca/syllabus",
+    href: "/courses/mca#syllabus",
     children: [
       { label: "MCA NEP2020 2nd Year syllabus", href: "/pdf/6.71N-MCA-Sem-III-IV.pdf", icon: Book },
       { label: "MCA NEP2020 1st Year syllabus", href: "/pdf/6.19-N-Master-of-Computer-Applications-Sem-I-II.pdf", icon: Book },

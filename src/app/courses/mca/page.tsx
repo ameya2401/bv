@@ -511,7 +511,7 @@ export default function MCAAdmissionsPage() {
             </div>
 
             {/* Download Resources */}
-            <motion.div {...fadeIn} className="max-w-4xl mx-auto mt-12 bg-card p-8 rounded-3xl border border-border/50 shadow-sm">
+            <motion.div {...fadeIn} id="syllabus" className="max-w-4xl mx-auto mt-12 bg-card p-8 rounded-3xl border border-border/50 shadow-sm">
               <h3 className="text-lg font-black uppercase tracking-tight mb-6 flex items-center gap-3">
                 <FileText className="w-5 h-5 text-primary" /> Official Syllabus Documents
               </h3>

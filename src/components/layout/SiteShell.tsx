@@ -6,7 +6,9 @@ import InstitutionalHeader from "@/components/InstitutionalHeader";
 import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
 
-import DarkVeil from "@/components/ui/DarkVeil";
+import dynamic from "next/dynamic";
+
+const DarkVeil = dynamic(() => import("@/components/ui/DarkVeil"), { ssr: false });
 
 interface SiteShellProps {
   children: ReactNode;
