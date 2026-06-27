@@ -398,6 +398,7 @@ export const contentRoutes = [
   { path: "/events/seminars/2024-25", sourceFile: "seminar_2024-25.php", title: "Seminars 2024-2025", section: "Events", summary: "Seminars from 2024-2025." },
   { path: "/events/seminars/2025-26", sourceFile: "seminar_2025-26.php", title: "Seminars 2025-2026", section: "Events", summary: "Seminars from 2025-2026." },
   { path: "/outreach/swatch", sourceFile: "swatch.php", title: "Swatch Bharat", section: "Outreach", summary: "Swatch Bharat activities." },
+  { path: "/outreach/covid-19", sourceFile: "covid19.php", title: "Covid 19 Awareness", section: "Outreach", summary: "Covid 19 awareness information and guidelines." },
 ];
 
 export const redirectRoutes = [
