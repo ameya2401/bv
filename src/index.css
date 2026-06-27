@@ -141,14 +141,7 @@
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
-  .dark body {
-    background-color: #1A202C !important;
-  }
-  .dark section.bg-background,
-  .dark main.bg-background,
-  .dark div.bg-background:not([class*="sticky"]):not([class*="header"]):not([class*="footer"]):not([class*="nav"]) {
-    background-color: transparent !important;
-  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Source Serif 4', Georgia, serif;
   }
@@ -476,3 +469,20 @@
     }
   }
 }
+
+/* College Ticker Marquee Style */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
