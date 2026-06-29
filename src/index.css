@@ -1,5 +1,5 @@
 /* DO NOT CHANGE */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
@@ -58,8 +58,8 @@
   /* Primary Accent & Brand Colors */
   --primary: #000888; 
   --primary-foreground: #ffffff;
-  --secondary: #FDC003; 
-  --secondary-foreground: #000000;
+  --secondary: #3339A0; /* Shade of primary for monotonous theme */
+  --secondary-foreground: #ffffff;
   
   --muted: #F2F2F2;
   --muted-foreground: #5a403f;
@@ -101,8 +101,8 @@
 
   --primary: #4f68ff; /* Lighter primary for dark mode visibility */
   --primary-foreground: #ffffff;
-  --secondary: #FDC003; 
-  --secondary-foreground: #000000;
+  --secondary: #6A7BFF; /* Shade of primary for dark mode */
+  --secondary-foreground: #ffffff;
 
   --muted: #374151;
   --muted-foreground: #9CA3AF;
@@ -140,14 +140,10 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    /* Human touch: Subtle ambient gradient */
-    background: radial-gradient(circle at top left, color-mix(in srgb, var(--primary) 6%, var(--background)), var(--background) 70%),
-                radial-gradient(circle at bottom right, color-mix(in srgb, var(--secondary) 8%, var(--background)), var(--background) 70%);
-    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
   button:not([disabled]),
   [role="button"]:not([disabled]) {
@@ -530,5 +526,96 @@
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Legacy Page Upgrades */
+.legacy-content .uk-overlay-primary {
+  background: rgba(0, 0, 0, 0.85) !important;
+  color: #ffffff !important;
+}
+
+.legacy-content .uk-overlay-primary p {
+  color: #ffffff !important;
+}
+
+/* Upgrade Card Layouts for Events (Entrepreneurship Cell, MoUs, Conference) */
+.legacy-content .card.mb-3 {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Upgraded PDF Document Containers */
+.legacy-content .col-md-3 .uk-inline.border {
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--card);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border) !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.legacy-content .col-md-3 .uk-inline.border:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.legacy-content .col-md-3 .uk-inline.border img:not([src*="corner-pdf.png"]) {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border);
+}
+
+.legacy-content .uk-overlay-primary.uk-position-bottom {
+  position: relative !important;
+  bottom: auto !important;
+  background: var(--card) !important;
+  color: var(--card-foreground) !important;
+  padding: 1.5rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.legacy-content .uk-overlay-primary p {
+  color: var(--card-foreground) !important;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.legacy-content .card.mb-3:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 768px) {
+  .legacy-content .card.mb-3 .row.no-gutters {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .legacy-content .card.mb-3 .col-md-6 {
+    flex: 1;
+  }
+}
+
+.legacy-content .card.mb-3 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none !important;
+  border-radius: 0 !important;
 }
 

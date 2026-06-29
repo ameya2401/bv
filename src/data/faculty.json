@@ -86,5 +86,38 @@
     "email": "nidhi.poonia@bharatividyapeeth.edu",
     "image": "https://bvimit.co.in/bvimit/facultyimage/Nidhi_Poonia.jpg",
     "resume": "https://bvimit.co.in/bvimit/facultyresume/nidhi_up.pdf"
+  },
+  {
+    "id": "manish-dubey",
+    "name": "Dr. Manish Dubey",
+    "designation": "Assistant Professor",
+    "qualification": "PhD, MCA",
+    "experience": "10 years",
+    "expertise": "Database Management, Cloud Computing",
+    "email": "manish.dubey@bharatividyapeeth.edu",
+    "image": "https://ui-avatars.com/api/?name=Manish+Dubey&background=000888&color=fff&size=512",
+    "resume": "#"
+  },
+  {
+    "id": "shambhu",
+    "name": "Mr. Shambhu",
+    "designation": "Assistant Professor",
+    "qualification": "MCA",
+    "experience": "8 years",
+    "expertise": "Web Technologies, Programming",
+    "email": "shambhu@bharatividyapeeth.edu",
+    "image": "https://ui-avatars.com/api/?name=Shambhu&background=000888&color=fff&size=512",
+    "resume": "#"
+  },
+  {
+    "id": "rasika",
+    "name": "Ms. Rasika",
+    "designation": "Assistant Professor",
+    "qualification": "MCA",
+    "experience": "5 years",
+    "expertise": "Software Engineering, Object Oriented Concepts",
+    "email": "rasika@bharatividyapeeth.edu",
+    "image": "https://ui-avatars.com/api/?name=Rasika&background=000888&color=fff&size=512",
+    "resume": "#"
   }
 ]

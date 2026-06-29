@@ -59,64 +59,57 @@ export default function FacultyListingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: (i % 4) * 0.1 }}
                   viewport={{ once: true }}
-                  className="group relative bg-card rounded-[2rem] border border-border/50 overflow-hidden shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-500"
+                  className="group relative bg-card border border-border/80 hover:border-primary transition-all duration-300 flex flex-col justify-between"
                 >
-                  {/* Image Container with Accent */}
-                  <div className="h-72 w-full relative overflow-hidden bg-muted">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                      <Link
-                        href={`/faculty/${member.id}`}
-                        className="w-full py-3 bg-primary text-white font-black uppercase text-[10px] tracking-widest text-center rounded-xl shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform"
-                      >
-                        View Detailed Profile
-                      </Link>
+                  <div className="absolute top-0 left-0 w-1 h-full bg-primary transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
+                  
+                  <div>
+                    {/* Image Container */}
+                    <div className="h-64 w-full relative overflow-hidden bg-muted border-b border-border/60">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute top-4 right-4 bg-background/95 backdrop-blur px-2.5 py-1 text-[8px] font-black uppercase tracking-widest border border-border">
+                        {member.experience} EXP
+                      </div>
+                    </div>
+
+                    {/* Faculty Brief Details */}
+                    <div className="p-6">
+                      <p className="text-primary text-[9px] font-black uppercase tracking-[0.15em] mb-1">
+                        {member.designation}
+                      </p>
+                      <h3 className="text-lg font-black text-foreground mb-4 tracking-tight group-hover:text-primary transition-colors truncate">
+                        {member.name}
+                      </h3>
+
+                      <div className="space-y-2.5 pt-3 border-t border-border/40 flex flex-col">
+                        <div className="flex items-center gap-2.5 text-muted-foreground">
+                          <GraduationCap className="w-3.5 h-3.5 text-primary/80" />
+                          <span className="text-[10px] font-bold uppercase tracking-wider truncate">
+                            {member.qualification}
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Faculty Brief Details */}
-                  <div className="p-8">
-                    <h3 className="text-xl font-black text-foreground mb-1 tracking-tight truncate">
-                      {member.name}
-                    </h3>
-                    <p className="text-primary text-[10px] font-black uppercase tracking-[0.1em] mb-4 opacity-80">
-                      {member.designation}
-                    </p>
-
-                    <div className="space-y-3 pt-4 border-t border-border/50">
-                      <div className="flex items-center gap-3 text-muted-foreground">
-                        <GraduationCap className="w-4 h-4 text-primary opacity-60" />
-                        <span className="text-[11px] font-bold uppercase tracking-wide truncate">
-                          {member.qualification}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-3 text-muted-foreground">
-                        <Briefcase className="w-4 h-4 text-primary opacity-60" />
-                        <span className="text-[11px] font-bold uppercase tracking-wide">
-                          {member.experience} EXP
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="mt-8 flex items-center justify-between">
-                      <Link
-                        href={`/faculty/${member.id}`}
-                        className="text-foreground font-black text-[10px] uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-2 group/btn"
-                      >
-                        Profile{" "}
-                        <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
-                      </Link>
-                      <a
-                        href={`mailto:${member.email}`}
-                        className="p-2.5 bg-muted/50 rounded-full hover:bg-primary/10 hover:text-primary transition-all"
-                      >
-                        <Mail className="w-4 h-4" />
-                      </a>
-                    </div>
+                  <div className="px-6 pb-6 flex items-center justify-between gap-4">
+                    <Link
+                      href={`/faculty/${member.id}`}
+                      className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-primary hover:text-primary/80 transition-colors group/link border-t border-border/40 pt-4 flex-1"
+                    >
+                      <span>Detailed Profile</span>
+                      <ArrowRight className="w-3.5 h-3.5 transform group-hover/link:translate-x-1 transition-transform" />
+                    </Link>
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="p-2 bg-muted/50 rounded-full hover:bg-primary/10 hover:text-primary transition-all mt-3"
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                    </a>
                   </div>
                 </motion.div>
               ))}

@@ -67,7 +67,7 @@ export default function Departments() {
             className="group relative max-w-6xl mx-auto"
           >
             {/* Gradient border effect */}
-            <div className="p-[1px] rounded-3xl bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30">
+            <div className="p-[1px] rounded-3xl bg-primary/30">
               <div className="bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-10 p-6 md:p-10">
                   {/* Left: Visual preview with floating badge */}

@@ -42,7 +42,7 @@ export default function EventsSeminarsPage() {
                       (e.target as HTMLImageElement).src = 'https://harmless-tapir-303.convex.cloud/api/storage/9a35e636-a4eb-419e-ba2b-edb716eef88b'; // Fallback image
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
                 
                 <div className="p-6 flex flex-col flex-grow">

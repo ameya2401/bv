@@ -33,7 +33,7 @@ export default function Syllabus() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto"
         >
-          <div className="p-[1px] rounded-2xl bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30">
+          <div className="p-[1px] rounded-2xl bg-primary/30">
             <div className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-xl bg-primary/10 text-primary">

@@ -123,7 +123,7 @@ export default function Chatbot() {
             </div>
 
             {/* Conversation Space */}
-            <div className="flex-1 overflow-y-auto px-6 pt-2 pb-6 space-y-6 scrollbar-none bg-gradient-to-b from-primary/5 via-transparent to-transparent">
+            <div className="flex-1 overflow-y-auto px-6 pt-2 pb-6 space-y-6 scrollbar-none bg-primary/5">
               {messages.map((msg) => (
                 <motion.div 
                   key={msg.id}

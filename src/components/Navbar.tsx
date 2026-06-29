@@ -2,14 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Menu, Moon, Sun, X } from "lucide-react";
+import { ChevronDown, Menu, Moon, Sun, X, Search } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import {
   navigationCallToAction,
   primaryNavigationItems,
-  siteBranding,
 } from "@/config/site-navigation";
 
 export default function Navbar() {
@@ -39,88 +38,73 @@ export default function Navbar() {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className="sticky top-0 left-0 right-0 z-[100] bg-background/95 backdrop-blur-xl text-foreground border-b border-border shadow-md transition-colors duration-300"
+    <nav
+      className="sticky top-0 left-0 right-0 z-[100] bg-background text-foreground border-b border-border/40 transition-colors duration-300 shadow-sm"
     >
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="hidden xl:flex items-center space-x-1 2xl:space-x-2 flex-wrap justify-center flex-1">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-14">
+          
+
+
+          {/* Solid Navigation Menu */}
+          <div className="hidden xl:flex items-center space-x-2 2xl:space-x-4 flex-1 justify-start">
             {primaryNavigationItems.map((item) => {
               if (item.children?.length || item.groups?.length) {
                 return (
                   <div
                     key={item.label}
                     className="relative"
-                    onMouseEnter={() => {
-                      setActiveDropdown(item.label);
-                    }}
-                    onMouseLeave={() => {
-                      setActiveDropdown(null);
-                    }}
+                    onMouseEnter={() => setActiveDropdown(item.label)}
+                    onMouseLeave={() => setActiveDropdown(null)}
                     ref={activeDropdown === item.label ? dropdownRef : null}
                   >
-                    <button className="relative flex items-center gap-1.5 text-foreground/80 hover:text-primary dark:hover:text-[#FDC003] font-bold text-[10px] 2xl:text-[11px] uppercase tracking-wider px-3 py-2 rounded-lg transition-all duration-300 hover:bg-muted/50">
+                    <button className="relative flex items-center gap-1.5 text-foreground/90 hover:text-primary font-bold text-xs uppercase tracking-wider px-4 py-3 rounded-md transition-all duration-300 hover:bg-foreground/5 group">
                       {item.label}
                       <ChevronDown
-                        className={`w-3.5 h-3.5 transition-transform duration-300 text-muted-foreground ${
-                          activeDropdown === item.label ? "rotate-180 text-primary dark:text-[#FDC003]" : ""
+                        className={`w-3.5 h-3.5 transition-transform duration-300 opacity-70 group-hover:opacity-100 ${
+                          activeDropdown === item.label ? "rotate-180" : ""
                         }`}
                       />
-                      {activeDropdown === item.label && (
-                        <motion.span
-                          layoutId="navUnderline"
-                          className="absolute bottom-0 left-3 right-3 h-[2px] bg-gradient-to-r from-primary to-[#FDC003] rounded-full"
-                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                        />
-                      )}
                     </button>
 
                     <AnimatePresence>
                       {activeDropdown === item.label ? (
                         <motion.div
-                          initial={{ opacity: 0, y: 15 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.2, ease: "easeOut" }}
-                          className={`absolute top-full mt-1 bg-popover/95 backdrop-blur-xl text-popover-foreground rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] border border-border/80 p-5 z-[150] ${
-                            item.menuVariant === "mega"
-                              ? "left-0 w-[550px]"
-                              : item.menuVariant === "more"
-                              ? "right-0 w-[920px]"
-                              : "left-0 min-w-[280px]"
+                          initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                          transition={{ duration: 0.2 }}
+                          className={`absolute top-full mt-2 bg-card text-card-foreground rounded-xl shadow-2xl border border-border p-6 z-[150] origin-top ${
+                            item.menuVariant === "mega" || item.menuVariant === "more"
+                              ? "left-1/2 -translate-x-1/2 w-[800px]"
+                              : "left-0 min-w-[300px]"
                           }`}
                         >
                           <div
                             className={
-                              item.menuVariant === "mega"
-                                ? "grid grid-cols-2 gap-5"
-                                : item.menuVariant === "more"
-                                ? "grid grid-cols-4 gap-6"
-                                : "flex flex-col gap-1.5"
+                              item.menuVariant === "mega" || item.menuVariant === "more"
+                                ? "grid grid-cols-3 gap-8"
+                                : "flex flex-col gap-2"
                             }
                           >
                             {item.groups ? (
                               item.groups.map((group) => (
-                                <div key={group.label} className="flex flex-col gap-2">
-                                  <h3 className="text-[10px] font-black uppercase text-primary dark:text-[#FDC003] tracking-widest border-b border-border/60 pb-2 mb-2">{group.label}</h3>
-                                  <div className="flex flex-col gap-1">
+                                <div key={group.label} className="flex flex-col gap-3">
+                                  <h3 className="text-[11px] font-black uppercase text-primary tracking-widest mb-1">{group.label}</h3>
+                                  <div className="flex flex-col gap-1.5">
                                     {group.links.map((child) => (
                                       <Link
                                         href={child.href}
                                         key={child.label}
                                         onClick={() => setActiveDropdown(null)}
-                                        className="group/drop flex items-center gap-3 p-2.5 rounded-xl hover:bg-primary/5 dark:hover:bg-white/5 transition-all duration-200"
+                                        className="group/link flex items-center gap-3 p-2 rounded-lg hover:bg-primary/5 transition-colors"
                                       >
-                                        <div className="p-2 rounded-lg bg-primary/10 text-primary dark:bg-white/10 dark:text-[#FDC003] group-hover/drop:bg-primary group-hover/drop:text-white dark:group-hover/drop:bg-[#FDC003] dark:group-hover/drop:text-background transition-colors duration-250">
+                                        <div className="p-2 rounded-md bg-muted text-muted-foreground group-hover/link:bg-primary group-hover/link:text-white transition-colors">
                                           <child.icon className="w-4 h-4" />
                                         </div>
-                                        <div>
-                                          <h4 className="font-bold text-[11px] uppercase tracking-wide text-foreground group-hover/drop:text-primary dark:group-hover/drop:text-[#FDC003]">
-                                            {child.label}
-                                          </h4>
-                                        </div>
+                                        <h4 className="font-semibold text-xs text-foreground group-hover/link:text-primary transition-colors">
+                                          {child.label}
+                                        </h4>
                                       </Link>
                                     ))}
                                   </div>
@@ -132,16 +116,14 @@ export default function Navbar() {
                                   href={child.href}
                                   key={child.label}
                                   onClick={() => setActiveDropdown(null)}
-                                  className="group/drop flex items-center gap-3.5 p-3 rounded-xl hover:bg-primary/5 dark:hover:bg-white/5 transition-all duration-200"
+                                  className="group/link flex items-center gap-4 p-3 rounded-xl hover:bg-primary/5 transition-colors"
                                 >
-                                  <div className="p-2.5 rounded-lg bg-primary/10 text-primary dark:bg-white/10 dark:text-[#FDC003] group-hover/drop:bg-primary group-hover/drop:text-white dark:group-hover/drop:bg-[#FDC003] dark:group-hover/drop:text-background transition-colors duration-250">
-                                    <child.icon className="w-4.5 h-4.5" />
+                                  <div className="p-3 rounded-lg bg-muted text-muted-foreground group-hover/link:bg-primary group-hover/link:text-white transition-colors shadow-sm">
+                                    <child.icon className="w-5 h-5" />
                                   </div>
-                                  <div>
-                                    <h4 className="font-bold text-xs uppercase tracking-wide text-foreground group-hover/drop:text-primary dark:group-hover/drop:text-[#FDC003]">
-                                      {child.label}
-                                    </h4>
-                                  </div>
+                                  <h4 className="font-bold text-sm text-foreground group-hover/link:text-primary transition-colors">
+                                    {child.label}
+                                  </h4>
                                 </Link>
                               ))
                             )}
@@ -157,80 +139,49 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="relative text-foreground/80 hover:text-primary dark:hover:text-[#FDC003] font-bold text-[10px] 2xl:text-[11px] uppercase tracking-wider px-3 py-2 rounded-lg transition-all duration-300 hover:bg-muted/50 flex items-center justify-center"
+                  className="relative text-foreground/90 hover:text-primary font-bold text-xs uppercase tracking-wider px-4 py-3 rounded-md transition-all duration-300 hover:bg-foreground/5"
                 >
-                  {item.icon ? <item.icon className="w-5 h-5" /> : item.label}
+                  {item.icon ? <item.icon className="w-4 h-4" /> : item.label}
                 </Link>
               );
             })}
           </div>
 
-          <div className="hidden xl:flex items-center gap-3">
+          {/* Right Actions */}
+          <div className="hidden xl:flex items-center gap-5">
             {mounted ? (
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="p-2 rounded-full hover:bg-muted transition-colors"
+                className="p-2.5 rounded-full bg-foreground/5 hover:bg-foreground/10 text-foreground transition-all duration-200"
               >
                 {theme === "dark" ? (
-                  <Moon className="w-5 h-5 text-primary" />
+                  <Moon className="w-4 h-4" />
                 ) : (
-                  <Sun className="w-5 h-5 text-orange-500" />
+                  <Sun className="w-4 h-4" />
                 )}
               </button>
             ) : null}
-            <Button
-              asChild
-              className="rounded-full px-8 font-black uppercase tracking-widest text-[10px]"
-            >
-              <Link href={navigationCallToAction.desktop.href}>
-                {navigationCallToAction.desktop.label}
-              </Link>
-            </Button>
+            <button className="p-2.5 rounded-full bg-foreground/5 hover:bg-foreground/10 text-foreground transition-all duration-200">
+               <Search className="w-4 h-4" />
+            </button>
           </div>
 
-          <div className="xl:hidden flex items-center justify-between w-full">
-            <Link
-              href={siteBranding.homeHref}
-              className="flex items-center gap-2"
-            >
-              <img
-                src="/assets/images/bharati_logo.png"
-                className="h-8 w-auto object-contain"
-                alt={`${siteBranding.shortName} logo`}
-              />
-              <span className="font-black text-sm tracking-tighter uppercase text-foreground">
-                {siteBranding.shortName}{" "}
-                <span className="text-primary italic">
-                  {siteBranding.location}
-                </span>
-              </span>
-            </Link>
-
-            <div className="flex items-center gap-3">
-              {mounted ? (
-                <button
-                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="p-2 rounded-full hover:bg-muted text-foreground"
-                >
-                  {theme === "dark" ? (
-                    <Moon className="w-5 h-5" />
-                  ) : (
-                    <Sun className="w-5 h-5" />
-                  )}
-                </button>
-              ) : null}
-
+          <div className="xl:hidden flex items-center gap-3">
+            {mounted ? (
               <button
-                className="p-2 text-foreground hover:bg-muted rounded-xl transition-colors"
-                onClick={() => setIsOpen((open) => !open)}
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="p-2 rounded-full bg-foreground/5 text-foreground hover:bg-foreground/10"
               >
-                {isOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
+                {theme === "dark" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
               </button>
-            </div>
+            ) : null}
+
+            <button
+              className="p-2 text-foreground bg-foreground/5 rounded-md hover:bg-foreground/10"
+              onClick={() => setIsOpen((open) => !open)}
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
         </div>
       </div>
@@ -241,10 +192,9 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="xl:hidden border-t border-border bg-background/95 overflow-hidden backdrop-blur-md"
+            className="xl:hidden border-t border-white/10 bg-primary"
           >
-            <div className="max-h-[70vh] overflow-y-auto px-4 pt-2 pb-6 flex flex-col space-y-1 mt-2">
+            <div className="max-h-[75vh] overflow-y-auto px-4 py-6 flex flex-col space-y-2">
               {primaryNavigationItems.map((item) => {
                 if (item.children?.length || item.groups?.length) {
                   return (
@@ -255,11 +205,11 @@ export default function Navbar() {
                             current === item.label ? null : item.label,
                           )
                         }
-                        className="flex items-center justify-between w-full px-3 py-3 text-base text-foreground font-medium rounded-md hover:bg-muted transition-colors duration-200"
+                        className="flex items-center justify-between w-full p-4 text-sm text-white font-bold uppercase tracking-wider rounded-lg hover:bg-white/10 transition-colors"
                       >
                         {item.label}
                         <ChevronDown
-                          className={`w-5 h-5 transition-transform duration-300 ${
+                          className={`w-4 h-4 transition-transform duration-300 ${
                             activeDropdown === item.label ? "rotate-180" : ""
                           }`}
                         />
@@ -270,34 +220,23 @@ export default function Navbar() {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
-                            className="bg-muted/30 rounded-xl overflow-hidden mt-1 mx-2"
+                            className="bg-black/20 rounded-xl overflow-hidden mt-2"
                           >
-                            <div
-                              className={
-                                item.menuVariant === "mega" || item.menuVariant === "more"
-                                  ? "grid grid-cols-1 gap-4 p-4"
-                                  : "flex flex-col p-2"
-                              }
-                            >
+                            <div className="flex flex-col p-3 gap-4">
                               {item.groups ? (
                                 item.groups.map((group) => (
                                   <div key={group.label} className="flex flex-col gap-2">
-                                    <h3 className="text-sm font-black uppercase text-primary border-b border-border/50 pb-2 mb-1">{group.label}</h3>
+                                    <h3 className="text-xs font-black uppercase text-white/50 border-b border-white/10 pb-2 mb-1 pl-2">{group.label}</h3>
                                     <div className="flex flex-col gap-1">
                                       {group.links.map((child) => (
                                         <Link
                                           key={child.label}
                                           href={child.href}
-                                          onClick={() => {
-                                            setActiveDropdown(null);
-                                            setIsOpen(false);
-                                          }}
-                                          className="flex items-center gap-3 p-2 hover:bg-muted transition-colors rounded-lg"
+                                          onClick={() => setIsOpen(false)}
+                                          className="flex items-center gap-3 p-3 hover:bg-white/10 transition-colors rounded-lg text-white"
                                         >
-                                          <div className="p-1.5 rounded-md shadow-sm bg-background text-primary border border-border">
-                                            <child.icon className="w-4 h-4" />
-                                          </div>
-                                          <div className="text-sm font-semibold text-foreground">
+                                          <child.icon className="w-4 h-4 opacity-70" />
+                                          <div className="text-sm font-semibold">
                                             {child.label}
                                           </div>
                                         </Link>
@@ -310,16 +249,11 @@ export default function Navbar() {
                                   <Link
                                     key={child.label}
                                     href={child.href}
-                                    onClick={() => {
-                                      setActiveDropdown(null);
-                                      setIsOpen(false);
-                                    }}
-                                    className="flex items-center gap-3 p-3 hover:bg-muted transition-colors rounded-lg"
+                                    onClick={() => setIsOpen(false)}
+                                    className="flex items-center gap-3 p-3 hover:bg-white/10 transition-colors rounded-lg text-white"
                                   >
-                                    <div className="p-1.5 rounded-md shadow-sm bg-background text-primary border border-border">
-                                      <child.icon className="w-4 h-4" />
-                                    </div>
-                                    <div className="text-sm font-semibold text-foreground">
+                                    <child.icon className="w-4 h-4 opacity-70" />
+                                    <div className="text-sm font-semibold">
                                       {child.label}
                                     </div>
                                   </Link>
@@ -337,19 +271,19 @@ export default function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="flex items-center gap-2 px-3 py-3 text-base text-foreground font-medium rounded-md hover:bg-muted transition-colors duration-200"
+                    className="flex items-center gap-3 p-4 text-sm text-white font-bold uppercase tracking-wider rounded-lg hover:bg-white/10 transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    {item.icon && <item.icon className="w-5 h-5" />}
+                    {item.icon && <item.icon className="w-4 h-4 opacity-70" />}
                     {item.label}
                   </Link>
                 );
               })}
 
-              <div className="pt-4 px-3">
+              <div className="pt-6">
                 <Button
                   asChild
-                  className="w-full rounded-full py-6 font-black uppercase tracking-widest text-xs shadow-xl"
+                  className="w-full rounded-lg h-12 bg-white text-primary hover:bg-white/90 font-black uppercase tracking-widest text-xs"
                 >
                   <Link href={navigationCallToAction.mobile.href}>
                     {navigationCallToAction.mobile.label}
@@ -360,6 +294,6 @@ export default function Navbar() {
           </motion.div>
         ) : null}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 }

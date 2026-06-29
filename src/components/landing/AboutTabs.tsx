@@ -166,20 +166,13 @@ export default function AboutTabs() {
 
   return (
     <section className="py-24 bg-background border-t border-border mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-foreground">
-            Discover <span className="text-primary italic">BVIMIT</span>
-          </h2>
-          <p className="text-muted-foreground font-semibold uppercase tracking-widest text-xs">
-            Learn more about our institution
-          </p>
-        </div>
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="bg-card border border-border border-t-4 border-t-primary rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row min-h-[600px]">
+
+        <div className="bg-white dark:bg-card border border-border/50 rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row min-h-[600px]">
           
           {/* Tabs Sidebar */}
-          <div className="w-full lg:w-1/3 bg-muted/10 border-b lg:border-b-0 lg:border-r border-border/50 p-4 lg:p-6 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible custom-scrollbar">
+          <div className="w-full lg:w-[280px] shrink-0 bg-white dark:bg-card border-b lg:border-b-0 lg:border-r border-border/20 p-4 lg:p-6 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible custom-scrollbar">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
               const Icon = tab.icon;
@@ -187,29 +180,21 @@ export default function AboutTabs() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex items-center gap-4 px-5 py-4 rounded-sm transition-all whitespace-nowrap lg:whitespace-normal text-left group overflow-hidden ${
+                  className={`relative flex items-center gap-4 px-4 py-3.5 rounded-lg transition-all whitespace-nowrap lg:whitespace-normal text-left group overflow-hidden ${
                     isActive 
-                      ? "text-primary-foreground" 
-                      : "hover:bg-muted text-muted-foreground hover:text-foreground"
+                      ? "text-white bg-[#000888] shadow-md" 
+                      : "hover:bg-muted/50 text-foreground/80 hover:text-foreground"
                   }`}
                 >
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeTabBackground"
-                      className="absolute inset-0 bg-primary z-0"
-                      initial={false}
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    />
-                  )}
-                  <Icon className={`w-5 h-5 shrink-0 relative z-10 ${isActive ? "text-primary-foreground" : "text-primary group-hover:scale-110 transition-transform"}`} />
-                  <span className="font-bold tracking-tight relative z-10">{tab.label}</span>
+                  <Icon className={`w-4 h-4 shrink-0 relative z-10 ${isActive ? "text-white" : "text-[#000888] group-hover:scale-110 transition-transform"}`} />
+                  <span className="font-bold text-sm tracking-tight relative z-10">{tab.label}</span>
                 </button>
               );
             })}
           </div>
 
           {/* Content Area */}
-          <div className="w-full lg:w-2/3 p-6 lg:p-12 relative overflow-hidden bg-card">
+          <div className="w-full p-6 lg:p-10 relative overflow-hidden bg-white dark:bg-card flex-1">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -219,51 +204,46 @@ export default function AboutTabs() {
                 transition={{ duration: 0.3 }}
                 className="h-full flex flex-col"
               >
-                <div className="flex flex-col xl:flex-row gap-10 items-start">
+                <div className="flex flex-col xl:flex-row gap-10 lg:gap-16 items-start">
                   
                   {/* Image */}
-                  <div className="w-full xl:w-5/12 shrink-0">
+                  <div className="w-full xl:w-[450px] shrink-0">
                     <motion.div 
                       whileHover={{ scale: 1.02 }}
                       transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                      className="relative aspect-[3/4] sm:aspect-video xl:aspect-[3/4] w-full rounded-sm overflow-hidden border border-border group/img"
+                      className="relative aspect-[3/4] w-full overflow-hidden shadow-xl rounded-xl group/img"
                     >
                       <Image 
                         src={activeContent.image} 
                         alt={activeContent.title}
                         fill
-                        className="object-cover group-hover/img:scale-110 transition-transform duration-700"
+                        className="object-cover group-hover/img:scale-105 transition-transform duration-700"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-black/20 to-transparent pointer-events-none opacity-80 mix-blend-multiply" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                      <div className="absolute bottom-0 left-0 p-6 text-white pointer-events-none translate-y-4 group-hover/img:translate-y-0 transition-transform duration-500">
-                        <h4 className="font-black text-xl leading-tight">{activeContent.title}</h4>
-                      </div>
                     </motion.div>
                   </div>
 
                   {/* Text Content */}
-                  <div className="w-full xl:w-7/12 flex flex-col h-full">
+                  <div className="w-full flex-1 flex flex-col h-full pt-2 xl:pt-0">
                     <div className="mb-6">
-                      <h3 className="text-3xl font-bold text-foreground tracking-tight mb-2">
+                      <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2 font-serif">
                         {activeContent.title}
                       </h3>
-                      <h5 className="text-sm font-bold uppercase tracking-widest text-primary">
+                      <h5 className="text-xs font-bold uppercase tracking-widest text-[#000888] mb-4">
                         {activeContent.subtitle}
                       </h5>
                     </div>
 
-                    <div className="text-muted-foreground text-lg leading-relaxed flex-grow">
+                    <div className="text-foreground/70 text-[15px] leading-relaxed flex-grow">
                       {activeContent.content}
                     </div>
 
-                    <div className="mt-8 pt-6 border-t border-border/50">
+                    <div className="mt-8 pt-6">
                       <Link 
                         href={activeContent.link}
-                        className="inline-flex items-center gap-2 bg-secondary text-black px-6 py-2 rounded-full font-bold transition-all group hover:bg-secondary/90 hover:shadow-[0_0_20px_rgba(253,192,3,0.4)] hover:-translate-y-1"
+                        className="inline-flex items-center gap-2 bg-[#ffcc00] text-black px-6 py-2.5 rounded-full font-bold text-sm transition-all group hover:bg-[#e6b800] shadow-sm hover:shadow-md"
                       >
                         Read More
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </Link>
                     </div>
                   </div>

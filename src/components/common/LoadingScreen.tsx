@@ -91,7 +91,7 @@ export default function LoadingScreen() {
             >
               {/* Shimmer effect overlay */}
               <motion.div
-                className="absolute inset-0 z-10 bg-gradient-to-r from-transparent via-white/40 to-transparent w-full h-full"
+                className="absolute inset-0 z-10 bg-white/20 w-full h-full"
                 animate={{
                   x: ["-100%", "200%"],
                 }}

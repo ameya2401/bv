@@ -78,7 +78,7 @@ export default function LeftColumn() {
           alt="Industrial Visit" 
           className="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
+        <div className="absolute inset-0 bg-black/50 flex items-end">
           <div className="p-6 text-white w-full text-center">
             <h3 className="text-3xl font-black mb-1 drop-shadow-md">Industrial Visit 2025</h3>
             <p className="font-medium text-white/90">IOS Innotech Chandigarh</p>

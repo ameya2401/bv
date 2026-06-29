@@ -15,7 +15,7 @@ export default function LegacyContentPage({ page }: LegacyContentPageProps) {
       <Navbar />
 
       <main>
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary/[0.03] via-background to-muted/40 dark:from-slate-950 dark:via-background dark:to-slate-900/40 py-16 md:py-24 border-b border-border/60">
+        <section className="relative overflow-hidden bg-muted/20 dark:bg-slate-900/40 py-16 md:py-24 border-b border-border/60">
           <div className="absolute inset-0 opacity-15 dark:opacity-35">
             <div className="absolute right-0 top-0 h-96 w-96 -translate-y-1/2 translate-x-1/3 rounded-full bg-primary/30 blur-[140px]" />
             <div className="absolute bottom-0 left-0 h-80 w-80 -translate-x-1/3 translate-y-1/3 rounded-full bg-[#FDC003]/20 blur-[120px]" />

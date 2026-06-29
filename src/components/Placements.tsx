@@ -144,40 +144,42 @@ export default function Placements() {
           </div>
         </motion.div>
 
-        {/* Company Logos */}
+        {/* Company Logos Carousel */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mt-24 text-center"
+          className="mt-24 text-center border-t border-border pt-16"
         >
           <div className="inline-block relative mb-12">
-            <h4 className="text-2xl font-bold text-foreground relative z-10 px-4">Our Placement Network</h4>
-            <div className="absolute bottom-0 left-0 w-full h-3 bg-primary/10 -rotate-1 rounded-full z-0" />
+            <h4 className="text-3xl font-black text-foreground relative z-10 px-4 tracking-tight">Our Placement Network</h4>
           </div>
           
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-            {companyLogos.map((logo, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.15, y: -5 }}
-                className="flex items-center justify-center p-4 bg-white/50 dark:bg-white/5 rounded-2xl shadow-sm hover:shadow-xl hover:bg-white transition-all duration-300 cursor-pointer border border-transparent hover:border-primary/20"
-              >
-                <img
-                  src={logo}
-                  alt={`Partner ${index + 1}`}
-                  className="max-h-10 md:max-h-12 w-auto object-contain"
-                />
-              </motion.div>
-            ))}
+          <div className="relative overflow-hidden w-full flex bg-muted/30 py-12 rounded-2xl border border-border/50">
+             <div className="flex animate-marquee-fast whitespace-nowrap">
+                {[...companyLogos, ...companyLogos].map((logo, index) => (
+                   <div key={index} className="mx-12 flex flex-col items-center justify-center min-w-[150px]">
+                      <img src={logo} alt={`Partner ${index}`} className="h-14 object-contain grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300" />
+                   </div>
+                ))}
+             </div>
           </div>
         </motion.div>
       </div>
+
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes marquee-fast {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-fast {
+          animation: marquee-fast 20s linear infinite;
+        }
+        .animate-marquee-fast:hover {
+          animation-play-state: paused;
+        }
+      `}} />
     </section>
   );
 }

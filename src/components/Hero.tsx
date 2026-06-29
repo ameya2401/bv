@@ -27,8 +27,8 @@ export default function Hero() {
           className="w-full h-full object-cover transition-all duration-700"
         />
         {/* Dynamic contrast overlays - only where needed for text/stats legibility */}
-        <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-        <div className="absolute inset-x-0 top-0 h-[30%] bg-gradient-to-b from-black/40 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[60%] bg-black/40" />
+        <div className="absolute inset-x-0 top-0 h-[30%] bg-black/20" />
       </div>
 
       <motion.div
